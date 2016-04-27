@@ -19,7 +19,13 @@ define( function( require ) {
 								text: 'ForumJS',
 								css: Styles.title
 							})
-						)
+						),
+						$( '<a />', {
+							text: 'Repo',
+							href: 'https://github.com/roberth26/ForumJS',
+							target: '_blank',
+							css: Styles.repoBtn
+						})
 					])
 				)
 			);
