@@ -1,0 +1,49 @@
+{
+	"threads": [
+		{
+			"id": 100,
+			"name": "Some thread",
+			"posts": [
+				{
+					"content": "this is some content"
+				},
+				{
+					"content": "this mkdklmdslmksdks content"
+				},
+				{
+					"content": "miikdkld sdlknsdnklsd this is content"
+				}
+			]
+		},
+		{
+			"id": 200,
+			"name": "Another thread",
+			"posts": [
+				{
+					"content": "helo wowld e content"
+				},
+				{
+					"content": "tlorem isps ont"
+				},
+				{
+					"content": "mblah blah lorem isut"
+				}
+			]
+		},
+		{
+			"id": 300,
+			"name": "this is a thread!",
+			"posts": [
+				{
+					"content": "hekdkldsklmsdlknt"
+				},
+				{
+					"content": "tlornids990nt"
+				},
+				{
+					"content": "mi  kiio io iioio io io io rem isut"
+				}
+			]
+		}
+	]
+}
