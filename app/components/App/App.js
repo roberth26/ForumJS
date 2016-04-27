@@ -13,22 +13,18 @@ define( function( require ) {
 					Router({
 						id: props.id + 'Router__',
 						indexRoute: {
-							component: function() {
-								return new ThreadList({
-									id: props.id + 'Router__ThreadList__',
-									threads: props.threads
-								});
-							}
+							component: ThreadList.bind( null, {
+								id: props.id + 'Router__ThreadList__',
+								threads: props.threads
+							})
 						},
 						routes: [
 							{
 								path: '/thread_id=',
-								component: function() {
-									return new ThreadView({
-										id: props.id + 'Router__ThreadView__',
-										threads: props.threads
-									});
-								}
+								component: ThreadView.bind( null, {
+									id: props.id + 'Router__ThreadView__',
+									threads: props.threads
+								})
 							}
 						]
 					})
