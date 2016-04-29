@@ -27,7 +27,7 @@ define( function( require ) {
 					isLoggedIn: false
 				});
 				this.saveState();
-				location.hash = '/'; // redirect
+				location.hash = '/login'; // redirect
 			},
 			saveState: function() {
 				localStorage.setItem( 'state', JSON.stringify( this.getState() ) );
