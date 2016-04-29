@@ -3,14 +3,22 @@
 		{
 			"id": 100,
 			"name": "Some thread",
+			"author": "Joe Shmoe",
+			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "this is some content"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "this mkdklmdslmksdks content"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "miikdkld sdlknsdnklsd this is content"
 				}
 			]
@@ -18,14 +26,22 @@
 		{
 			"id": 200,
 			"name": "Another thread",
+			"author": "Jane Doe",
+			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "helo wowld e content"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "tlorem isps ont"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "mblah blah lorem isut"
 				}
 			]
@@ -33,14 +49,22 @@
 		{
 			"id": 300,
 			"name": "this is a thread!",
+			"Author": "Robert Hall",
+			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
 				{
+					"author": "Some Person",
+					"date": "Thu Apr 29 2016 14:33:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "hekdkldsklmsdlknt"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "tlornids990nt"
 				},
 				{
+					"author": "Bill Gates",
+					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
 					"content": "mi  kiio io iioio io io io rem isut"
 				}
 			]

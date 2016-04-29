@@ -19,7 +19,7 @@ define( function( require ) {
 				return thread.id.toString() === id.toString();
 			})[ 0 ];
 
-			var posts = thread.posts.map( function( post, index ) {
+			var posts = !thread ? null : thread.posts.map( function( post, index ) {
 				return (
 					$( '<li />', {
 						html: post.content
@@ -30,13 +30,15 @@ define( function( require ) {
 			return (
 				$( '<div />' ).append([
 					Header({
-						id: props.id + 'Header__'
+						id: props.id + 'Header__',
+						isLoggedIn: props.isLoggedIn,
+						onLogout: props.onLogout
 					}),
 					$( '<div />', {
 						css: Styles.container
 					}).append([
 						$( '<h1 />', {
-							text: thread.name,
+							text: thread ? thread.name : '',
 							css: Styles.threadTitle
 						}),
 						$( '<ul />' ).append(

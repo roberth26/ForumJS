@@ -6,38 +6,46 @@ define( function( require ) {
 
 	return Component.extend({
 		state: {
-			component: null
+			route: null
 		},
 		handleHashChange: function( e ) {
 			e.preventDefault();
 			this.setState({
-				component: this.getMatchedComponent()
+				route: this.getMatchedRoute()
 			});
 		},
-		getMatchedComponent: function() {
+		getMatchedRoute: function() {
 			var hash = location.hash.substring( 1 );
 			var props = this.getProps();
-			var component = props.indexRoute.component();
-			$.each( props.routes, function( index, route ) {
+			var route = props.indexRoute;
+			$.each( props.routes, function( index, theRoute ) {
 				if ( hash == '/' ) {
 					return false; // already index route component
-				} else if ( hash.indexOf( route.path ) > -1 ) {
-					component = route.component();
-					return false;
+				} else if ( hash.indexOf( theRoute.path ) > -1 ) {
+					route = theRoute;
 				}
 			});
-			return component;
+			return route;
+		},
+		componentWillUpdate: function() {
+			var route = this.getMatchedRoute();
+			if ( route.redirect &&
+				route.redirect.shouldRedirect &&
+				route.redirect.shouldRedirect() )
+			{
+				location.hash = route.redirect.path;
+			}
 		},
 		render: function() {
-			console.log( 'Router.render()' );
 			window.onhashchange = this.handleHashChange;
 			var state = this.getState();
-			var component = state.component;
-			if ( component == null )
-				component = this.getMatchedComponent();
+			var props = this.getProps();
+			var route = state.route;
+			if ( route == null )
+				route = this.getMatchedRoute();
 			return (
 				$( '<div />' ).append(
-					component
+					route.component()
 				)
 			);
 		}

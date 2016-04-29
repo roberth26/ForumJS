@@ -12,7 +12,8 @@ define( function( require ) {
 		padding: '0px 15px',
 		marginTop: 5,
 	    borderRadius: 3,
-	    fontSize: '1.2rem'
+	    fontSize: '1.2rem',
+	    cursor: 'pointer'
 	};
 	return {
 		header: {
@@ -32,10 +33,10 @@ define( function( require ) {
 			lineHeight: '40px',
 			height: 40
 		},
-		resetBtn: $.extend( {}, btn, {
-			marginLeft: 10
-		}),
 		repoBtn: btn,
+		logoutBtn: $.extend( {}, btn, {
+			marginRight: 10
+		}),
 		container: GlobalStyles.container
 	};
 });

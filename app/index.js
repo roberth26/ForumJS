@@ -11,12 +11,12 @@ requirejs.config({
 });
 
 requirejs( [ 'jquery', 'App/App' ], function( $, App ) {
-	$( document ).ready( function() {
-		$.getJSON( 'data.json', function( data ) {
+	App.then( function( app ) {
+		$( document ).ready( function() {
 			$( '#app_container' ).append(
-				App( $.extend( {}, data, {
+				app({
 					id: 'App-01__'
-				}))
+				})
 			);
 		});
 	});

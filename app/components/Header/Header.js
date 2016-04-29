@@ -5,6 +5,7 @@ define( function( require ) {
 
 	return Component.extend({
 		render: function() {
+			var props = this.getProps();
 			return (
 				$( '<header />', {
 					css: Styles.header
@@ -25,6 +26,12 @@ define( function( require ) {
 							href: 'https://github.com/roberth26/ForumJS',
 							target: '_blank',
 							css: Styles.repoBtn
+						}),
+						!props.isLoggedIn ? null :
+						$( '<a />', {
+							text: 'Log Out',
+							css: Styles.logoutBtn,
+							click: props.onLogout
 						})
 					])
 				)
