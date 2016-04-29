@@ -20,7 +20,7 @@ define( function( require ) {
 					username: username
 				});
 				this.saveState();
-				location.hash = '/threads'; // redirect
+				location.hash = '/'; // redirect
 			},
 			logout: function() {
 				this.setState({
@@ -62,7 +62,7 @@ define( function( require ) {
 				this.setState({
 					threads: threads
 				});
-				location.hash = '/thrsdsdsdsd'; // WHY DOES THIS WORK????
+				location.hash = '/' + Math.floor( Math.random() * 10000 ); // WHY DOES THIS WORK???? hashchange needs to fire...
 			},
 			render: function() {
 				var props = this.getProps();
@@ -72,37 +72,22 @@ define( function( require ) {
 						Router({
 							id: props.id + 'Router__',
 							indexRoute: {
-								component: Login.bind( null, {
-									id: props.id + 'Router__Login__',
+								component: ThreadList.bind( null, {
+									id: props.id + 'Router__ThreadList__',
+									threads: state.threads,
 									isLoggedIn: state.isLoggedIn,
-									onLogin: this.login,
-									onLogout: this.logout
+									onLogout: this.logout,
+									username: state.username,
+									onCreateThread: this.createThread
 								}),
 								redirect: {
-									path: '/threads',
+									path: '/login',
 									shouldRedirect: function() {
-										return state.isLoggedIn;
+										return !state.isLoggedIn;
 									}
 								}
 							},
 							routes: [
-								{
-									path: '/threads',
-									component: ThreadList.bind( null, {
-										id: props.id + 'Router__ThreadList__',
-										threads: state.threads,
-										isLoggedIn: state.isLoggedIn,
-										onLogout: this.logout,
-										username: state.username,
-										onCreateThread: this.createThread
-									}),
-									redirect: {
-										path: '/',
-										shouldRedirect: function() {
-											return !state.isLoggedIn;
-										}
-									}
-								},
 								{
 									path: '/threads/thread_id=',
 									component: ThreadView.bind( null, {
@@ -115,6 +100,21 @@ define( function( require ) {
 										path: '/',
 										shouldRedirect: function() {
 											return !state.isLoggedIn;
+										}
+									}
+								},
+								{
+									path: '/login',
+									component: Login.bind( null, {
+										id: props.id + 'Router__Login__',
+										isLoggedIn: state.isLoggedIn,
+										onLogin: this.login,
+										onLogout: this.logout
+									}),
+									redirect: {
+										path: '/',
+										shouldRedirect: function() {
+											return state.isLoggedIn;
 										}
 									}
 								}

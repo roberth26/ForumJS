@@ -20,7 +20,7 @@ define( function( require ) {
 			var route = props.indexRoute;
 			$.each( props.routes, function( index, theRoute ) {
 				if ( hash == '/' ) {
-					return false; // already index route component
+					//return false; // already index route component
 				} else if ( hash.indexOf( theRoute.path ) > -1 ) {
 					route = theRoute;
 				}
