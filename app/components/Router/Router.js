@@ -45,7 +45,7 @@ define( function( require ) {
 				route = this.getMatchedRoute();
 			return (
 				$( '<div />' ).append(
-					route.component()
+					route.component.call()
 				)
 			);
 		}

@@ -34,9 +34,10 @@ define( function( require ) {
 			},
 			createThread: function( threadName ) {
 				var threads = this.getState().threads;
+				var id = Math.floor( Math.random() * 100 ) + 400;
 				threads.push({
-					"id": 400,
-					"name": "THIS IS A GENERATED THREAD",
+					"id": id,
+					"name": 'Generated Thread ' + id,
 					"author": "sdkldsmksdmksd",
 					"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 					"posts": [
@@ -60,11 +61,11 @@ define( function( require ) {
 				this.setState({
 					threads: threads
 				});
+				location.hash = '/thrsdsdsdsd'; // WHY DOES THIS WORK????
 			},
 			render: function() {
 				var props = this.getProps();
 				var state = this.getState();
-				console.log( state.threads );
 				return (
 					$( '<div />' ).append(
 						Router({

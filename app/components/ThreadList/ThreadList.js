@@ -33,7 +33,8 @@ define( function( require ) {
 								return (
 									ThreadListItem({
 										id: props.id + 'ThreadListItem_' + index + '__',
-										thread: thread
+										thread: thread,
+										index: index
 									})
 								);
 							}.bind( this ))

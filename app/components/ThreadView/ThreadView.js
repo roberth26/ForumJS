@@ -2,6 +2,7 @@ define( function( require ) {
     var $         = require( 'jquery' );
     var Component = require( 'Component' );
     var Header    = require( 'Header/Header' );
+    var PostView  = require( 'PostView/PostView' );
     var Styles    = require( './Styles' );
 
 	return Component.extend({
@@ -21,8 +22,9 @@ define( function( require ) {
 
 			var posts = !thread ? null : thread.posts.map( function( post, index ) {
 				return (
-					$( '<li />', {
-						html: post.content
+					PostView({
+						id: props.id + 'PostView-' + index + '__',
+						post: post
 					})
 				);
 			});
@@ -41,8 +43,14 @@ define( function( require ) {
 							text: thread ? thread.name : '',
 							css: Styles.threadTitle
 						}),
-						$( '<ul />' ).append(
-							posts
+						$( '<div />', {
+							css: Styles.wrapper
+						}).append(
+							$( '<ul />', {
+								css: Styles.list
+							}).append(
+								posts
+							)
 						)
 					])
 				])

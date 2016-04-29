@@ -7,17 +7,18 @@ define( function( require ) {
 	return Component.extend({
 		render: function() {
 			var props = this.getProps();
+			var state = this.getState();
+
 			return (
 				$( '<li />', {
-					css: props.index % 2 == 0 ? Styles.listItem : Styles.listItemAlt
+					css: Styles.post
 				}).append([
-					$( '<div />', {
-						text: 'By: ' + props.thread.author,
+					$( '<h2 />', {
+						text: props.post.author,
 						css: Styles.author
 					}),
-					$( '<a />', {
-						href: '#/threads/thread_id=' + props.thread.id,
-						text: props.thread.name
+					$( '<div />', {
+						text: props.post.content
 					})
 				])
 			);
