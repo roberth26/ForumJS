@@ -33,12 +33,13 @@ define( function( require ) {
 				localStorage.setItem( 'state', JSON.stringify( this.getState() ) );
 			},
 			createThread: function( threadName ) {
+				var state = this.getState();
 				var threads = this.getState().threads;
 				var id = Math.floor( Math.random() * 100 ) + 400;
 				threads.push({
 					"id": id,
 					"name": 'Generated Thread ' + id,
-					"author": "sdkldsmksdmksd",
+					"author": state.username,
 					"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 					"posts": [
 						{
