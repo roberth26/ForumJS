@@ -26,15 +26,19 @@ define( function( require ) {
 			var props = this.getProps();
 			var state = this.getState();
 			var thread = this.getThread( props );
-			thread.posts.unshift({
-				author: thread.author,
-				content: thread.content,
-				data: thread.data
-			});
+			if ( thread ) {
+				thread.posts.unshift({
+					author: thread.author,
+					content: thread.content,
+					data: thread.data
+				});
+			}
 
 			return (
 				Page({
 					id: props.id + 'Page__',
+					isLoggedIn: props.isLoggedIn,
+					onLogout: props.onLogout,
 					children: [
 						$( '<h1 />', {
 							text: thread ? thread.name : '',

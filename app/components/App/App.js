@@ -24,11 +24,11 @@ define( function( require ) {
 				location.hash = '/'; // redirect
 			},
 			logout: function() {
+				location.hash = '/login'; // redirect
 				this.setState({
 					isLoggedIn: false
 				});
 				this.saveState();
-				location.hash = '/login'; // redirect
 			},
 			saveState: function() {
 				localStorage.setItem( 'forumState', JSON.stringify( this.getState() ) );

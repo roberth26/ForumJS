@@ -21,7 +21,13 @@ define( function( require ) {
 			return (
 				Page({
 					id: props.id + 'Page__',
+					isLoggedIn: props.isLoggedIn,
+					onLogout: props.onLogout,
 					children: [
+						$( '<h2 />', {
+							text: 'New Thread',
+							css: Styles.title
+						}),
 						$( '<form />', {
 							submit: this.handleSubmit
 						}).append([

@@ -11,7 +11,8 @@ define( function( require ) {
 				$( '<div />' ).append([
 					Header({
 						id: props.id + 'Header__',
-						isLoggedIn: props.isLoggedIn
+						isLoggedIn: props.isLoggedIn,
+						onLogout: props.onLogout
 					}),
 					$( '<div />', {
 						css: Styles.container

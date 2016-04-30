@@ -18,7 +18,8 @@ define( function( require ) {
 			borderRadius: 5,
 			color: 'white',
 			backgroundColor: GlobalStyles.mainColor,
-			cursor: 'pointer'
+			cursor: 'pointer',
+			textDecoration: 'none'
 		}
 	};
 });

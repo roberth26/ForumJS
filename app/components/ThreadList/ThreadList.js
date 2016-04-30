@@ -12,6 +12,8 @@ define( function( require ) {
 			return (
 				Page({
 					id: props.id + 'Page__',
+					isLoggedIn: props.isLoggedIn,
+					onLogout: props.onLogout,
 					children: [
 						$( '<a />', {
 							text: 'Create Thread',
