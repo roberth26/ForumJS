@@ -1,8 +1,6 @@
 define( function( require ) {
     var $          = require( 'jquery' );
     var Component  = require( 'Component' );
-    var ThreadList = require( 'ThreadList/ThreadList' );
-    var ThreadView = require( 'ThreadView/ThreadView' );
 
 	return Component.extend({
 		state: {
@@ -28,6 +26,7 @@ define( function( require ) {
 			return route;
 		},
 		componentWillUpdate: function() {
+			window.onhashchange = this.handleHashChange;
 			var route = this.getMatchedRoute();
 			if ( route.redirect &&
 				route.redirect.shouldRedirect &&
@@ -37,12 +36,13 @@ define( function( require ) {
 			}
 		},
 		render: function() {
-			window.onhashchange = this.handleHashChange;
 			var state = this.getState();
 			var props = this.getProps();
+			
 			var route = state.route;
 			if ( route == null )
 				route = this.getMatchedRoute();
+			
 			return (
 				$( '<div />' ).append(
 					route.component.call()

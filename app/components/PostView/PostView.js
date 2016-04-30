@@ -1,7 +1,6 @@
 define( function( require ) {
     var $         = require( 'jquery' );
     var Component = require( 'Component' );
-    var Header    = require( 'Header/Header' );
     var Styles    = require( './Styles' );
 
 	return Component.extend({

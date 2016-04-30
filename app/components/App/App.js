@@ -1,13 +1,14 @@
 define( function( require ) {
-    var $          = require( 'jquery' );
-    var getData    = require( '../../services/GetData' );
-    var Component  = require( 'Component' );
-    var Router     = require( 'Router/Router' );
-    var ThreadList = require( 'ThreadList/ThreadList' );
-    var ThreadView = require( 'ThreadView/ThreadView' );
-    var Login      = require( 'Login/Login' );
+    var $            = require( 'jquery' );
+    var Data         = require( '../../services/Data' );
+    var Component    = require( 'Component' );
+    var Router       = require( 'Router/Router' );
+    var ThreadList   = require( 'ThreadList/ThreadList' );
+    var ThreadView   = require( 'ThreadView/ThreadView' );
+    var Login        = require( 'Login/Login' );
+    var CreateThread = require( 'CreateThread/CreateThread' );
 
-	return getData().then( function( data ) {
+	return Data.get().then( function( data ) {
 		return Component.extend({
 			state: {
 				isLoggedIn: false,
@@ -30,39 +31,23 @@ define( function( require ) {
 				location.hash = '/login'; // redirect
 			},
 			saveState: function() {
-				localStorage.setItem( 'state', JSON.stringify( this.getState() ) );
+				localStorage.setItem( 'forumState', JSON.stringify( this.getState() ) );
 			},
-			createThread: function( threadName ) {
+			createThread: function( threadData ) {
 				var state = this.getState();
 				var threads = this.getState().threads;
-				var id = Math.floor( Math.random() * 100 ) + 400;
 				threads.push({
-					"id": id,
-					"name": 'Generated Thread ' + id,
-					"author": state.username,
-					"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
-					"posts": [
-						{
-							"author": "Bill Gates",
-							"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
-							"content": "this is some content"
-						},
-						{
-							"author": "Bill Gates",
-							"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
-							"content": "this mkdklmdslmksdks content"
-						},
-						{
-							"author": "Bill Gates",
-							"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
-							"content": "miikdkld sdlknsdnklsd this is content"
-						}
-					]
+					id: Math.floor( Math.random() * 100 ) + 400,
+					title: threadData.title,
+					content: threadData.content,
+					author: state.username,
+					data: new Date(),
+					posts: []
 				});
 				this.setState({
 					threads: threads
 				});
-				location.hash = '/' + Math.floor( Math.random() * 10000 ); // WHY DOES THIS WORK???? hashchange needs to fire...
+				location.hash = '/';
 			},
 			render: function() {
 				var props = this.getProps();
@@ -77,8 +62,7 @@ define( function( require ) {
 									threads: state.threads,
 									isLoggedIn: state.isLoggedIn,
 									onLogout: this.logout,
-									username: state.username,
-									onCreateThread: this.createThread
+									username: state.username
 								}),
 								redirect: {
 									path: '/login',
@@ -88,6 +72,21 @@ define( function( require ) {
 								}
 							},
 							routes: [
+								{
+									path: '/threads/create',
+									component: CreateThread.bind( null, {
+										id: props.id + 'Router__CreateThread__',
+										onCreateThread: this.createThread,
+										isLoggedIn: state.isLoggedIn,
+										onLogout: this.logout
+									}),
+									redirect: {
+										path: '/',
+										shouldRedirect: function() {
+											return !state.isLoggedIn;
+										}
+									}
+								},
 								{
 									path: '/threads/thread_id=',
 									component: ThreadView.bind( null, {

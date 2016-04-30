@@ -2,7 +2,8 @@
 	"threads": [
 		{
 			"id": 100,
-			"name": "Some thread",
+			"title": "Some thread",
+			"content": "blah blah",
 			"author": "Joe Shmoe",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
@@ -25,7 +26,8 @@
 		},
 		{
 			"id": 200,
-			"name": "Another thread",
+			"title": "Another thread",
+			"content": "blah blah",
 			"author": "Jane Doe",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
@@ -48,7 +50,8 @@
 		},
 		{
 			"id": 300,
-			"name": "this is a thread!",
+			"title": "this is a thread!",
+			"content": "blah blah",
 			"Author": "Robert Hall",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [

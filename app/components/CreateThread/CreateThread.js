@@ -8,10 +8,16 @@ define( function( require ) {
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onLogin( formData[ 0 ].value );
+			this.getProps().onCreateThread(
+				formData.reduce( function( object, value, index ) {
+					object[ value.name ] = value.value;
+					return object;
+				}, {} )
+			);
 		},
 		render: function() {
 			var props = this.getProps();
+
 			return (
 				Page({
 					id: props.id + 'Page__',
@@ -23,27 +29,26 @@ define( function( require ) {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Username:'
+									text: 'Thread Title:'
 								}),
 								$( '<input />', {
 									type: 'text',
-									name: 'username'
+									name: 'title'
 								})
 							]),
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Password:'
+									text: 'content:'
 								}),
-								$( '<input />', {
-									type: 'password',
-									name: 'password'
+								$( '<textarea />', {
+									name: 'content'
 								})
 							]),
 							$( '<button />', {
 								type: 'submit',
-								text: 'Login',
+								text: 'Create',
 								css: Styles.button
 							})
 						])

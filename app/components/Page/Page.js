@@ -8,17 +8,16 @@ define( function( require ) {
 		render: function() {
 			var props = this.getProps();
 			return (
-				$( '<li />', {
-					css: props.index % 2 == 0 ? Styles.listItem : Styles.listItemAlt
-				}).append([
-					$( '<div />', {
-						text: 'By: ' + props.thread.author,
-						css: Styles.author
+				$( '<div />' ).append([
+					Header({
+						id: props.id + 'Header__',
+						isLoggedIn: props.isLoggedIn
 					}),
-					$( '<a />', {
-						href: '#/threads/thread_id=' + props.thread.id,
-						text: props.thread.title
-					})
+					$( '<div />', {
+						css: Styles.container
+					}).append(
+						props.children
+					)
 				])
 			);
 		}
