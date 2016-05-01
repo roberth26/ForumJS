@@ -7,8 +7,8 @@ define( function( require ) {
 		render: function() {
 			var props = this.getProps();
 			return (
-				$( '<header />', {
-					css: props.css ? $.extend( {}, Styles.header, props.css ) : Styles.header
+				$( '<footer />', {
+					css: Styles.footer
 				}).append(
 					$( '<div />', {
 						css: Styles.container
@@ -17,20 +17,20 @@ define( function( require ) {
 							href: '#/'
 						}).append(
 							$( '<h1 />', {
-								html: 'Forum<strong>JS</strong>',
-								css: Styles.title
+								text: 'ForumJS',
+								//css: Styles.title
 							})
 						),
 						$( '<a />', {
 							text: 'Repo',
 							href: 'https://github.com/roberth26/ForumJS',
 							target: '_blank',
-							css: Styles.repoBtn
+							//css: Styles.repoBtn
 						}),
 						!props.isLoggedIn ? null :
 						$( '<a />', {
 							text: 'Log Out',
-							css: Styles.logoutBtn,
+							//css: Styles.logoutBtn,
 							click: props.onLogout
 						})
 					])

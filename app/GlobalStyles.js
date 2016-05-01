@@ -8,9 +8,8 @@ define( function( require ) {
 		minHeight: 1
 	};
 	return $.extend( true, {}, {
-		mainColor: '#ffa800',
-		mainColorBorder: '#CC8330',
-		mainFontColor: 'rgb( 186, 218, 255 )',
+		mainColor: 'rgb( 114, 0, 255 )',
+		mainFontColor: 'rgb( 100, 100, 100 )',
 		secondaryColor: '#C1C1C1',
 		container: {
 			maxWidth: 990,
@@ -27,5 +26,6 @@ define( function( require ) {
 		col_9: $.extend( {}, col, {
 			width: '75%'
 		}),
+		gradient: '-webkit-linear-gradient( -60deg, rgb( 114, 0, 255 ) 25%, rgb( 0, 136, 255 ) 100% )'
 	});
 });

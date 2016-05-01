@@ -8,50 +8,63 @@ define( function( require ) {
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onCreateThread(
-				formData.reduce( function( object, value, index ) {
-					object[ value.name ] = value.value;
-					return object;
-				}, {} )
-			);
+			this.getProps().onLogin( formData[ 0 ].value );
 		},
 		render: function() {
 			var props = this.getProps();
-
 			return (
 				Page({
 					id: props.id + 'Page__',
-					title: 'New Thread',
+					title: 'Reply',
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					children: [
 						$( '<form />', {
+							css: Styles.form,
 							submit: this.handleSubmit
 						}).append([
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Thread Title:'
+									text: 'Username',
+									css: Styles.label
 								}),
 								$( '<input />', {
 									type: 'text',
-									name: 'title'
+									name: 'username',
+									css: Styles.input
 								})
 							]),
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'content:'
+									text: 'Password',
+									css: Styles.label
 								}),
-								$( '<textarea />', {
-									name: 'content'
+								$( '<input />', {
+									type: 'password',
+									name: 'password',
+									css: Styles.input
+								})
+							]),
+							$( '<div />', {
+								css: Styles.register
+							}).append([
+								$( '<span />', {
+									text: 'Register',
+									css: Styles.label
+								}),
+								$( '<input />', {
+									type: 'checkbox',
+									name: 'register',
+									css: Styles.checkbox
 								})
 							]),
 							$( '<button />', {
 								type: 'submit',
-								text: 'Create',
+								text: 'Login',
 								css: Styles.button
 							})
 						])

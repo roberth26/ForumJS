@@ -3,16 +3,41 @@ define( function( require ) {
 	var GlobalStyles = require( 'GlobalStyles' );
 
 	var listItem = {
-		padding: 8,
-		borderBottom: '1px solid rgba( 0, 0, 0, .25 )'
+		padding: '10px 15px',
+		borderBottom: '1px solid rgba( 0, 0, 0, .125 )',
+		color: GlobalStyles.mainFontColor,
+		background: 'transparent',
+		fontFamily: 'inherit'
 	};
 	return {
+		link: {
+			textDecoration: 'none',
+			color: 'inherit'
+		},
 		listItem: listItem,
 		listItemAlt: $.extend( {}, listItem, {
-			backgroundColor: 'rgb( 240, 240, 240 )'
+			background: '-webkit-linear-gradient( left, transparent 0%, rgb( 220, 220, 220 ) 25%,rgb( 220, 220, 220 ) 75%, transparent',
+		}),
+		listItemHover: $.extend( {}, listItem, {
+			background: GlobalStyles.mainColor,
+			color: 'white'
 		}),
 		author: {
-			float: 'right'
+			color: 'inherit',
+			fontSize: '1.4rem',
+			fontFamily: 'inherit'
+		},
+		title: {
+			color: 'inherit',
+			marginBottom: 5,
+			fontWeight: 'bold',
+			fontSize: '1.8rem',
+			fontFamily: 'inherit'
+		},
+		date: {
+			float: 'right',
+			lineHeight: '38px',
+			height: 38
 		}
 	};
 });

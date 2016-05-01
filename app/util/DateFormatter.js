@@ -1,12 +1,24 @@
 define( function() {
+	var months = [
+		'Jan.',
+		'Feb.',
+		'Mar.',
+		'Apr.',
+		'May',
+		'Jun.',
+		'Jul.',
+		'Aug.',
+		'Sep.',
+		'Oct.',
+		'Nov.',
+		'Dec.'
+	]
 	return {
 		format: function( date ) {
-			var hours = date.getHours();
-			var am = hours < 12 ? 'am' : 'pm';
-			hours %= 12;
-			var minutes = date.getMinutes();
-			minutes = minutes < 10 ? ( '0' + minutes ) : minutes;
-			return hours + ':' + minutes + am;
+			if ( !( date instanceof Date ) ) {
+				date = new Date( date );
+			}
+			return months[ date.getMonth() ] + ' ' + date.getDay() + ', ' + date.getFullYear();
 		},
 		difference: function( start, end ) {
 			if ( !start || !end ) return null;

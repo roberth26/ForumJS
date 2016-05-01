@@ -7,6 +7,8 @@ define( function( require ) {
     var ThreadView   = require( 'ThreadView/ThreadView' );
     var Login        = require( 'Login/Login' );
     var CreateThread = require( 'CreateThread/CreateThread' );
+    var Reply        = require( 'Reply/Reply' );
+    var Styles       = require( './Styles' );
 
 	return Data.get().then( function( data ) {
 		return Component.extend({
@@ -41,7 +43,7 @@ define( function( require ) {
 					title: threadData.title,
 					content: threadData.content,
 					author: state.username,
-					data: new Date(),
+					data: new Date().getTime(),
 					posts: []
 				});
 				this.setState({
@@ -53,7 +55,9 @@ define( function( require ) {
 				var props = this.getProps();
 				var state = this.getState();
 				return (
-					$( '<div />' ).append(
+					$( '<div />', {
+						css: Styles.app
+					}).append(
 						Router({
 							id: props.id + 'Router__',
 							indexRoute: {
@@ -114,6 +118,21 @@ define( function( require ) {
 										path: '/',
 										shouldRedirect: function() {
 											return state.isLoggedIn;
+										}
+									}
+								},
+								{
+									path: '/reply',
+									component: Reply.bind( null, {
+										id: props.id + 'Router__Reply__',
+										isLoggedIn: state.isLoggedIn,
+										onLogin: this.login,
+										onLogout: this.logout
+									}),
+									redirect: {
+										path: '/',
+										shouldRedirect: function() {
+											return !state.isLoggedIn;
 										}
 									}
 								}

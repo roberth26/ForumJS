@@ -3,12 +3,12 @@ define( function( require ) {
 	var GlobalStyles = require( 'GlobalStyles' ); 
 
 	var btn = {
-		color: GlobalStyles.mainFontColor,
+		color: 'white',
 		float: 'right',
-		lineHeight: '30px',
+		lineHeight: '28px',
 		height: 30,
 		textDecoration: 'none',
-		border: '1px solid ' + GlobalStyles.mainFontColor,
+		border: '1px solid white',
 		padding: '0px 15px',
 		marginTop: 5,
 	    borderRadius: 3,
@@ -17,10 +17,8 @@ define( function( require ) {
 	};
 	return {
 		header: {
-			backgroundColor: 'rgb( 15, 33, 53 )',
-			borderBottom: '1px solid black',
+			background: GlobalStyles.gradient,
 			height: 60,
-			boxShadow: 'rgba(0, 0, 0, 0.3) 0px 1px 4px',
 			padding: '10px 0',
 			marginBottom: 30
 		},
@@ -28,8 +26,7 @@ define( function( require ) {
 			float: 'left',
 			fontSize: '2.4rem',
 			lineHeight: '1',
-			color: GlobalStyles.mainFontColor,
-			textShadow: '0px -2px 0px black',
+			color: 'white',
 			lineHeight: '40px',
 			height: 40
 		},

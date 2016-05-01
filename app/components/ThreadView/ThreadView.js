@@ -37,13 +37,14 @@ define( function( require ) {
 			return (
 				Page({
 					id: props.id + 'Page__',
+					title: thread ? thread.title : '',
+					button: $( '<a />', {
+						text: 'Reply',
+						href: location.hash + '/reply'
+					}),
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					children: [
-						$( '<h1 />', {
-							text: thread ? thread.name : '',
-							css: Styles.threadTitle
-						}),
 						$( '<div />', {
 							css: Styles.wrapper
 						}).append(

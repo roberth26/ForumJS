@@ -8,6 +8,9 @@ define( function( require ) {
 			fontSize: '2.4rem',
 			marginBottom: 20
 		},
+		reply: {
+
+		},
 		wrapper: {
 			overflow: 'hidden'
 		},

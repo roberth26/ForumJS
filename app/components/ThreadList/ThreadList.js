@@ -12,18 +12,14 @@ define( function( require ) {
 			return (
 				Page({
 					id: props.id + 'Page__',
+					title: 'Hello ' + props.username,
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
+					button: $( '<a />', {
+						text: 'Create Thread',
+						href: '#/threads/create'
+					}),
 					children: [
-						$( '<a />', {
-							text: 'Create Thread',
-							css: Styles.createThread,
-							href: '#/threads/create'
-						}),
-						$( '<h2 />', {
-							text: 'Hello ' + props.username,
-							css: Styles.greeting
-						}),
 						$( '<ul />' ).append(
 							props.threads.map( function( thread, index ) {
 								return (

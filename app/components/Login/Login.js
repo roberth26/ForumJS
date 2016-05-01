@@ -1,7 +1,8 @@
 define( function( require ) {
     var $         = require( 'jquery' );
     var Component = require( 'Component' );
-    var Page      = require( 'Page/Page' );
+    var Header    = require( 'Header/Header' );
+    var Footer    = require( 'Footer/Footer' );
     var Styles    = require( './Styles' );
 
 	return Component.extend({
@@ -13,44 +14,68 @@ define( function( require ) {
 		render: function() {
 			var props = this.getProps();
 			return (
-				Page({
-					id: props.id + 'Page__',
-					isLoggedIn: props.isLoggedIn,
-					onLogout: props.onLogout,
-					children: [
+				$( '<div />', {
+					css: Styles.page
+				}).append([
+					Header({
+						id: props.id + 'Header__',
+						isLoggedIn: props.isLoggedIn,
+						onLogout: props.onLogout,
+						css: Styles.header
+					}),
+					$( '<div />', {
+						css: Styles.container
+					}).append(
+						$( '<h1 />', {
+							text: 'Login',
+							css: Styles.title
+						})
+					).append(
 						$( '<form />', {
+							css: Styles.form,
 							submit: this.handleSubmit
 						}).append([
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Username:'
+									text: 'Username',
+									css: Styles.label
 								}),
 								$( '<input />', {
 									type: 'text',
-									name: 'username'
+									name: 'username',
+									placeholder: 'username',
+									css: Styles.input
 								})
 							]),
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Password:'
+									text: 'Password',
+									css: Styles.label
 								}),
 								$( '<input />', {
 									type: 'password',
-									name: 'password'
+									name: 'password',
+									placeholder: 'password',
+									css: Styles.input
 								})
 							]),
 							$( '<button />', {
 								type: 'submit',
 								text: 'Login',
-								css: Styles.button
+								css: Styles.loginBtn
+							}),
+							$( '<button />', {
+								type: 'submit',
+								text: 'Register',
+								css: Styles.registerBtn
 							})
 						])
-					]
-				})
+					)
+				])
 			);
 		}
 	});
