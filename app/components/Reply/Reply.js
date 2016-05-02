@@ -6,7 +6,6 @@ define( function( require ) {
 
 	return Component.extend({
 		handleSubmit: function( thread, props, e ) {
-			console.log( thread );
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
 			this.getProps().onReply( thread.id, formData[ 0 ].value );

@@ -2,8 +2,8 @@
 	"threads": [
 		{
 			"id": 100,
-			"title": "Some thread",
-			"content": "blah blah",
+			"title": "ReactJS is the best!",
+			"content": "Composable components, declarative UI, and unidirectional data flow. What more do you want? Oh yea, JSX rocks!",
 			"author": "Joe Shmoe",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
@@ -26,15 +26,15 @@
 		},
 		{
 			"id": 200,
-			"title": "Another thread",
-			"content": "blah blah",
+			"title": "No Angular is obviously the winner...",
+			"content": "This is a paragraph about how Angular is the best front-end framework. Blah Blah",
 			"author": "Jane Doe",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
 				{
-					"author": "Bill Gates",
+					"author": "Robert Hall",
 					"date": "Thu Apr 31 2016 12:01:13 GMT-0700 (Pacific Daylight Time)",
-					"content": "helo wowld e content"
+					"content": "Angular is the most complete solution."
 				},
 				{
 					"author": "Bill Gates",
@@ -50,15 +50,15 @@
 		},
 		{
 			"id": 300,
-			"title": "this is a thread!",
+			"title": "Vue.js is much simpler than Angular",
 			"content": "blah blah",
-			"Author": "Robert Hall",
+			"author": "Robert Hall",
 			"date": "Thu Apr 28 2016 20:51:13 GMT-0700 (Pacific Daylight Time)",
 			"posts": [
 				{
 					"author": "Some Person",
 					"date": "Thu Apr 29 2016 14:33:13 GMT-0700 (Pacific Daylight Time)",
-					"content": "hekdkldsklmsdlknt"
+					"content": "Have you read the documentation? It's great."
 				},
 				{
 					"author": "Bill Gates",
