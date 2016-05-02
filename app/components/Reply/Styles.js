@@ -3,50 +3,36 @@ define( function( require ) {
 	var GlobalStyles = require( 'GlobalStyles' ); 
 
 	return {
-		form: {
-			width: 240
-		},
-		button: {
-			display: 'block',
-			height: 44,
-			backgroundColor: GlobalStyles.mainColor,
+		submitBtn: {
+			float: 'right',
+			padding: '0 20px',
+			borderRadius: 5,
 			color: 'white',
-			borderRadius: '3px',
-			border: 0,
-			textAlign: 'center',
-			lineHeight: '40px',
-			width: '100%',
+			backgroundColor: GlobalStyles.mainColor,
 			cursor: 'pointer',
-			marginTop: 35,
+			textDecoration: 'none',
+			height: 44,
+			lineHeight: '44px',
+			border: 0,
 			fontSize: '1.6rem'
 		},
-		input: {
+		textarea: {
 			display: 'block',
 			width: '100%',
 			padding: '15px',
-			height: 44,
-			backgroundColor: 'rgb( 245, 245, 245 )',
-			border: '1px solid rgb( 205, 205, 205 )',
+			height: 120,
+			backgroundColor: 'white',
+			border: '1px solid rgba( 0, 0, 0, .2 )',
 			borderRadius: 3,
 			fontSize: '1.6rem',
-			color: GlobalStyles.mainFontColor
-		},
-		checkbox: {
-			verticalAlign: 'middle',
-			display: 'inline-block',
-			marginLeft: 10
-		},
-		register: {
-			float: 'right',
-			marginBottom: 15
-		},
-		inputGroup: {
-			marginBottom: 15
-		},
-		label: {
 			color: GlobalStyles.mainFontColor,
-			marginBottom: 5
+			marginBottom: 15
 		},
-		container: GlobalStyles.container
+		title: {
+			fontSize: '2.0rem',
+			margin: '0 0 30px 0',
+			color: GlobalStyles.mainFontColor,
+			fontWeight: 'bold'
+		},
 	};
 });

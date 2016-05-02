@@ -5,12 +5,21 @@ define( function( require ) {
 	return {
 		post: {
 			marginTop: 30,
-			borderBottom: '1px solid lightgrey',
-			padding: 15
+			borderTop: '1px solid lightgrey',
+			padding: '30px 0 0 0'
 		},
 		author: {
-			fontSize: '2rem',
-			marginBottom: 10
+			fontSize: '1.8rem',
+			fontWeight: 'bold',
+			marginBottom: 10,
+			color: GlobalStyles.mainFontColor
+		},
+		content: {
+			color: GlobalStyles.mainFontColor
+		},
+		date: {
+			float: 'right',
+			color: GlobalStyles.mainFontColor
 		}
 	};
 });

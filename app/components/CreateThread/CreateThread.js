@@ -32,28 +32,33 @@ define( function( require ) {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'Thread Title:'
+									text: 'Title:',
+									css: Styles.label
 								}),
 								$( '<input />', {
 									type: 'text',
-									name: 'title'
+									name: 'title',
+									css: Styles.input
 								})
 							]),
 							$( '<div />', {
 								css: Styles.inputGroup
 							}).append([
 								$( '<div />', {
-									text: 'content:'
+									text: 'Content:',
+									css: Styles.label
 								}),
 								$( '<textarea />', {
-									name: 'content'
+									name: 'content',
+									css: Styles.textarea
 								})
 							]),
 							$( '<button />', {
 								type: 'submit',
 								text: 'Create',
 								css: Styles.button
-							})
+							}),
+							$( '<div style="clear:both;"></div>' )
 						])
 					]
 				})

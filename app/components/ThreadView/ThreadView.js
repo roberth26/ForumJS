@@ -26,25 +26,36 @@ define( function( require ) {
 			var props = this.getProps();
 			var state = this.getState();
 			var thread = this.getThread( props );
-			if ( thread ) {
-				thread.posts.unshift({
-					author: thread.author,
-					content: thread.content,
-					data: thread.data
-				});
-			}
+
+			var replyBtn = $( '<a />', {
+				text: 'Reply',
+				href: location.hash + '/reply'
+			});
 
 			return (
 				Page({
 					id: props.id + 'Page__',
 					title: thread ? thread.title : '',
-					button: $( '<a />', {
-						text: 'Reply',
-						href: location.hash + '/reply'
-					}),
+					button: replyBtn,
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					children: [
+						$( '<div />', {
+							css: Styles.openingPost
+						}).append([
+							$( '<h2 />', {
+								text: thread.author,
+								css: Styles.author
+							}),
+							$( '<div />', {
+								text: thread.content,
+								css: Styles.threadContent
+							})
+						]),
+						$( '<h2 />', {
+							text: thread.posts.length + ' Responses:',
+							css: Styles.responses
+						}),
 						$( '<div />', {
 							css: Styles.wrapper
 						}).append(
@@ -53,7 +64,9 @@ define( function( require ) {
 							}).append(
 								this.renderPosts( props, thread )
 							)
-						)
+						),
+						replyBtn.clone().css( Styles.replyBtn ),
+						$( '<div style="clear:both;"></div>' )
 					]
 				})
 			);

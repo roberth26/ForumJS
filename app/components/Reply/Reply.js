@@ -5,68 +5,40 @@ define( function( require ) {
     var Styles    = require( './Styles' );
 
 	return Component.extend({
-		handleSubmit: function( e ) {
+		handleSubmit: function( thread, props, e ) {
+			console.log( thread );
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onLogin( formData[ 0 ].value );
+			this.getProps().onReply( thread.id, formData[ 0 ].value );
 		},
 		render: function() {
 			var props = this.getProps();
+			var thread = props.getCurrentThread();
+
 			return (
 				Page({
 					id: props.id + 'Page__',
-					title: 'Reply',
+					title: 'Reply to',
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					children: [
+						$( '<h2 />', {
+							text: thread.title,
+							css: Styles.title
+						}),
 						$( '<form />', {
-							css: Styles.form,
-							submit: this.handleSubmit
+							submit: this.handleSubmit.bind( null, thread, props )
 						}).append([
-							$( '<div />', {
-								css: Styles.inputGroup
-							}).append([
-								$( '<div />', {
-									text: 'Username',
-									css: Styles.label
-								}),
-								$( '<input />', {
-									type: 'text',
-									name: 'username',
-									css: Styles.input
-								})
-							]),
-							$( '<div />', {
-								css: Styles.inputGroup
-							}).append([
-								$( '<div />', {
-									text: 'Password',
-									css: Styles.label
-								}),
-								$( '<input />', {
-									type: 'password',
-									name: 'password',
-									css: Styles.input
-								})
-							]),
-							$( '<div />', {
-								css: Styles.register
-							}).append([
-								$( '<span />', {
-									text: 'Register',
-									css: Styles.label
-								}),
-								$( '<input />', {
-									type: 'checkbox',
-									name: 'register',
-									css: Styles.checkbox
-								})
-							]),
+							$( '<textarea />', {
+								name: 'content',
+								css: Styles.textarea
+							}),
 							$( '<button />', {
 								type: 'submit',
-								text: 'Login',
-								css: Styles.button
-							})
+								text: 'Submit',
+								css: Styles.submitBtn
+							}),
+							$( '<div style="clear:both;"></div>' )
 						])
 					]
 				})

@@ -26,6 +26,6 @@ define( function( require ) {
 		col_9: $.extend( {}, col, {
 			width: '75%'
 		}),
-		gradient: '-webkit-linear-gradient( -60deg, rgb( 114, 0, 255 ) 25%, rgb( 0, 136, 255 ) 100% )'
+		gradient: '-webkit-linear-gradient( -60deg, rgb( 114, 0, 255 ) 30%, rgb( 0, 136, 255 ) 100% )'
 	});
 });

@@ -43,13 +43,35 @@ define( function( require ) {
 					title: threadData.title,
 					content: threadData.content,
 					author: state.username,
-					data: new Date().getTime(),
+					date: new Date().toString(),
 					posts: []
 				});
 				this.setState({
 					threads: threads
 				});
 				location.hash = '/';
+			},
+			replyToThread: function( threadId, reply ) {
+				var state = this.getState();
+				var threads = this.getState().threads;
+				var thread = threads.find( function( thread ) {
+					return thread.id == threadId;
+				});
+				thread.posts.push({
+					content: reply,
+					date: new Date().toString(),
+					author: state.username
+				});
+				this.setState({
+					threads: threads
+				});
+				location.hash = '/threads/thread_id=' + thread.id;
+			},
+			getCurrentThread: function() {
+				var id = parseInt( location.hash.split( 'thread_id=' ).pop() );
+				return this.getState().threads.find( function( thread ) {
+					return thread.id == id;
+				});
 			},
 			render: function() {
 				var props = this.getProps();
@@ -127,7 +149,9 @@ define( function( require ) {
 										id: props.id + 'Router__Reply__',
 										isLoggedIn: state.isLoggedIn,
 										onLogin: this.login,
-										onLogout: this.logout
+										onLogout: this.logout,
+										getCurrentThread: this.getCurrentThread,
+										onReply: this.replyToThread
 									}),
 									redirect: {
 										path: '/',

@@ -18,7 +18,7 @@ define( function() {
 			if ( !( date instanceof Date ) ) {
 				date = new Date( date );
 			}
-			return months[ date.getMonth() ] + ' ' + date.getDay() + ', ' + date.getFullYear();
+			return months[ date.getMonth() ] + ' ' + ( date.getDay() + 1 ) + ', ' + date.getFullYear();
 		},
 		difference: function( start, end ) {
 			if ( !start || !end ) return null;

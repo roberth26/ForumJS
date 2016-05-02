@@ -8,7 +8,10 @@ define( function( require ) {
 	return Component.extend({
 		render: function() {
 			var props = this.getProps();
-
+			var threads = props.threads;
+			threads.sort( function( a, b ) {
+				return new Date( b.date ) - new Date( a.date );
+			});
 			return (
 				Page({
 					id: props.id + 'Page__',
@@ -21,7 +24,7 @@ define( function( require ) {
 					}),
 					children: [
 						$( '<ul />' ).append(
-							props.threads.map( function( thread, index ) {
+							threads.map( function( thread, index ) {
 								return (
 									ThreadListItem({
 										id: props.id + 'ThreadListItem_' + index + '__',
