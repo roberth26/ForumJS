@@ -7,7 +7,8 @@ define( function( require ) {
 			backgroundColor: 'rgb( 230, 230, 230 )'
 		},
 		container: $.extend( {}, GlobalStyles.container, {
-			paddingBottom: 60
+			paddingBottom: 60,
+			opacity: 0
 		}),
 		title: {
 			fontSize: '2.4rem',

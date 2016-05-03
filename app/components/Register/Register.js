@@ -9,7 +9,7 @@ define( function( require ) {
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onLogin( formData[ 0 ].value );
+			this.getProps().onRegisterUser( formData[ 0 ].value );
 		},
 		render: function() {
 			var props = this.getProps();
@@ -63,14 +63,23 @@ define( function( require ) {
 									css: Styles.input
 								})
 							]),
+							$( '<div />', {
+								css: Styles.inputGroup
+							}).append([
+								$( '<div />', {
+									text: 'Email',
+									css: Styles.label
+								}),
+								$( '<input />', {
+									type: 'email',
+									name: 'email',
+									placeholder: 'email',
+									css: Styles.input
+								})
+							]),
 							$( '<button />', {
 								type: 'submit',
-								text: 'Login',
-								css: Styles.loginBtn
-							}),
-							$( '<a />', {
 								text: 'Register',
-								href: '#/register',
 								css: Styles.registerBtn
 							})
 						])

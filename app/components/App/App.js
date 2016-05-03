@@ -6,6 +6,7 @@ define( function( require ) {
     var ThreadList   = require( 'ThreadList/ThreadList' );
     var ThreadView   = require( 'ThreadView/ThreadView' );
     var Login        = require( 'Login/Login' );
+    var Register     = require( 'Register/Register' );
     var CreateThread = require( 'CreateThread/CreateThread' );
     var Reply        = require( 'Reply/Reply' );
     var Styles       = require( './Styles' );
@@ -31,6 +32,9 @@ define( function( require ) {
 					isLoggedIn: false
 				});
 				this.saveState();
+			},
+			registerUser: function( username ) {
+				this.login( username );
 			},
 			saveState: function() {
 				localStorage.setItem( 'forumState', JSON.stringify( this.getState() ) );
@@ -142,6 +146,15 @@ define( function( require ) {
 											return state.isLoggedIn;
 										}
 									}
+								},
+								{
+									path: '/register',
+									component: Register.bind( null, {
+										id: props.id + 'Router__Register__',
+										isLoggedIn: state.isLoggedIn,
+										onRegisterUser: this.registerUser,
+										onLogout: this.logout
+									})
 								},
 								{
 									path: '/reply',

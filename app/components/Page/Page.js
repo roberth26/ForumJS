@@ -1,5 +1,6 @@
 define( function( require ) {
     var $         = require( 'jquery' );
+    var animate   = require( '../../util/Animate' );
     var Component = require( 'Component' );
     var Row       = require( 'Row/Row' );
     var Header    = require( 'Header/Header' );
@@ -19,7 +20,11 @@ define( function( require ) {
 						onLogout: props.onLogout
 					}),
 					$( '<div />', {
-						css: Styles.container
+						css: Styles.container,
+						onload: function() {
+							animate( $( this ), 'opacity', '', 0, 1, 300 );
+							animate( $( this ), 'transform', 'translateX({value}px)', 150, 0, 300 );
+						}
 					}).append(
 						Row({
 							id: props.id + 'Row__',
