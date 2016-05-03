@@ -23,7 +23,7 @@ define( function( require ) {
 						css: Styles.container,
 						onload: function() {
 							animate( $( this ), 'opacity', '', 0, 1, 300 );
-							animate( $( this ), 'transform', 'translateX({value}px)', 150, 0, 300 );
+							animate( $( this ), 'transform', 'translateX({value}px)', props.slideLeft ? 150 : -150, 0, 300 );
 						}
 					}).append(
 						Row({

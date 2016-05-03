@@ -20,6 +20,7 @@ define( function( require ) {
 					title: 'Reply to',
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
+					slideLeft: props.slideLeft,
 					children: [
 						$( '<h2 />', {
 							text: thread.title,

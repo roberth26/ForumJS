@@ -92,7 +92,8 @@ define( function( require ) {
 									threads: state.threads,
 									isLoggedIn: state.isLoggedIn,
 									onLogout: this.logout,
-									username: state.username
+									username: state.username,
+									slideLeft: false
 								}),
 								redirect: {
 									path: '/login',
@@ -108,7 +109,8 @@ define( function( require ) {
 										id: props.id + 'Router__CreateThread__',
 										onCreateThread: this.createThread,
 										isLoggedIn: state.isLoggedIn,
-										onLogout: this.logout
+										onLogout: this.logout,
+										slideLeft: true
 									}),
 									redirect: {
 										path: '/',
@@ -123,7 +125,8 @@ define( function( require ) {
 										id: props.id + 'Router__ThreadView__',
 										threads: state.threads,
 										isLoggedIn: state.isLoggedIn,
-										onLogout: this.logout
+										onLogout: this.logout,
+										slideLeft: false
 									}),
 									redirect: {
 										path: '/',
@@ -153,7 +156,7 @@ define( function( require ) {
 										id: props.id + 'Router__Register__',
 										isLoggedIn: state.isLoggedIn,
 										onRegisterUser: this.registerUser,
-										onLogout: this.logout
+										onLogout: this.logout,
 									})
 								},
 								{
@@ -164,7 +167,8 @@ define( function( require ) {
 										onLogin: this.login,
 										onLogout: this.logout,
 										getCurrentThread: this.getCurrentThread,
-										onReply: this.replyToThread
+										onReply: this.replyToThread,
+										slideLeft: true
 									}),
 									redirect: {
 										path: '/',

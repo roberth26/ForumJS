@@ -24,6 +24,7 @@ define( function( require ) {
 					title: 'New Thread',
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
+					slideLeft: props.slideLeft,
 					children: [
 						$( '<form />', {
 							submit: this.handleSubmit

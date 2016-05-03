@@ -18,6 +18,7 @@ define( function( require ) {
 					title: 'Hello ' + props.username,
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
+					slideLeft: props.slideLeft,
 					button: $( '<a />', {
 						text: 'Create Thread',
 						href: '#/threads/create'

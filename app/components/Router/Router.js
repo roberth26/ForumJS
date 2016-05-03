@@ -42,7 +42,7 @@ define( function( require ) {
 			var route = state.route;
 			if ( route == null )
 				route = this.getMatchedRoute();
-			
+
 			return (
 				$( '<div />' ).append(
 					route.component.call()

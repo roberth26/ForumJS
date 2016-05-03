@@ -39,6 +39,7 @@ define( function( require ) {
 					button: replyBtn,
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
+					slideLeft: props.slideLeft,
 					children: [
 						$( '<div />', {
 							css: Styles.openingPost
