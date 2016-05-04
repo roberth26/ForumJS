@@ -17,9 +17,7 @@ define( function( require ) {
 			var props = this.getProps();
 			var route = props.indexRoute;
 			$.each( props.routes, function( index, theRoute ) {
-				if ( hash == '/' ) {
-					//return false; // already index route component
-				} else if ( hash.indexOf( theRoute.path ) > -1 ) {
+				if ( hash.indexOf( theRoute.path ) > -1 ) {
 					route = theRoute;
 				}
 			});
@@ -39,9 +37,7 @@ define( function( require ) {
 			var state = this.getState();
 			var props = this.getProps();
 			
-			var route = state.route;
-			if ( route == null )
-				route = this.getMatchedRoute();
+			var route = state.route ? state.route : this.getMatchedRoute();
 
 			return (
 				$( '<div />' ).append(
