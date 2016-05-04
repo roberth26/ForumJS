@@ -28,9 +28,12 @@ define( function( require ) {
 			var state = this.getState();
 			var thread = this.getThread( props );
 
-			var responseCount =	thread ? thread.posts.length + ' Responses:' : '';
-			if ( thread.posts.length == 0 ) responseCount = 'No responses yet.';
-			if ( thread.posts.length == 1 ) responseCount = '1 Response';
+			var responseCount =	'';
+			if ( thread ) {
+				responseCount = thread.posts.length + ' Responses:';
+				if ( thread.posts.length == 0 ) responseCount = 'No responses yet.';
+				if ( thread.posts.length == 1 ) responseCount = '1 Response';
+			}
 
 			return (
 				Page({
