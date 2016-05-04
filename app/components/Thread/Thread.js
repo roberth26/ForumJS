@@ -2,7 +2,7 @@ define( function( require ) {
     var $             = require( 'jquery' );
     var Component     = require( 'Component' );
     var Page          = require( 'Page/Page' );
-    var PostView      = require( 'PostView/PostView' );
+    var Post          = require( 'Post/Post' );
     var DateFormatter = require( '../../util/DateFormatter' );
     var Styles        = require( './Styles' );
 
@@ -16,8 +16,8 @@ define( function( require ) {
 		renderPosts: function( props, thread ) {
 			return !thread ? null : thread.posts.map( function( post, index ) {
 				return (
-					PostView({
-						id: props.id + 'PostView-' + ( index + 1 ) + '__',
+					Post({
+						id: props.id + 'Post-' + ( index + 1 ) + '__',
 						post: post
 					})
 				);

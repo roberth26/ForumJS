@@ -4,7 +4,7 @@ define( function( require ) {
     var Component    = require( 'Component' );
     var Router       = require( 'Router/Router' );
     var ThreadList   = require( 'ThreadList/ThreadList' );
-    var ThreadView   = require( 'ThreadView/ThreadView' );
+    var Thread       = require( 'Thread/Thread' );
     var Login        = require( 'Login/Login' );
     var Register     = require( 'Register/Register' );
     var CreateThread = require( 'CreateThread/CreateThread' );
@@ -122,8 +122,8 @@ define( function( require ) {
 								},
 								{
 									path: '/threads/thread_id=',
-									component: ThreadView.bind( null, {
-										id: props.id + 'Router__ThreadView__',
+									component: Thread.bind( null, {
+										id: props.id + 'Router__Thread__',
 										threads: state.threads,
 										isLoggedIn: state.isLoggedIn,
 										onLogout: this.logout,
