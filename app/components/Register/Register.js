@@ -27,7 +27,7 @@ define( function( require ) {
 						css: Styles.container
 					}).append(
 						$( '<h1 />', {
-							text: 'Login',
+							text: 'Register',
 							css: Styles.title
 						})
 					).append(

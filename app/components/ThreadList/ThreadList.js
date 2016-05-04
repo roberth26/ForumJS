@@ -19,21 +19,30 @@ define( function( require ) {
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					slideLeft: props.slideLeft,
+					username: props.username,
 					button: $( '<a />', {
 						text: 'Create Thread',
 						href: '#/threads/create'
 					}),
 					children: [
-						$( '<ul />' ).append(
-							threads.map( function( thread, index ) {
-								return (
-									ThreadListItem({
-										id: props.id + 'ThreadListItem_' + index + '__',
-										thread: thread,
-										index: index
-									})
-								);
-							}.bind( this ))
+						$( '<div />', {
+							css: Styles.wrapper
+						}).append(
+							$( '<ul />', {
+								css: Styles.list
+							}).append(
+								threads.sort( function( a, b ) {
+									return new Date( b.date ) - new Date( a.date );
+								}).map( function( thread, index ) {
+									return (
+										ThreadListItem({
+											id: props.id + 'ThreadListItem_' + index + '__',
+											thread: thread,
+											index: index
+										})
+									);
+								}.bind( this ))
+							)
 						)
 					]
 				})

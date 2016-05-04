@@ -15,7 +15,8 @@ define( function( require ) {
 			color: GlobalStyles.mainFontColor
 		},
 		content: {
-			color: GlobalStyles.mainFontColor
+			color: GlobalStyles.mainFontColor,
+			lineHeight: 1.5
 		},
 		date: {
 			float: 'right',

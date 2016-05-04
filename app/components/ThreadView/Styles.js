@@ -39,10 +39,15 @@ define( function( require ) {
 			color: GlobalStyles.mainColor
 		},
 		threadContent: {
-			color: GlobalStyles.mainFontColor
+			color: GlobalStyles.mainFontColor,
+			lineHeight: 1.5
 		},
 		openingPost: {
 			marginBottom: 30
+		},
+		date: {
+			float: 'right',
+			color: GlobalStyles.mainFontColor
 		}
 	};
 });

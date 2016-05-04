@@ -1,9 +1,10 @@
 define( function( require ) {
-    var $         = require( 'jquery' );
-    var Component = require( 'Component' );
-    var Page      = require( 'Page/Page' );
-    var PostView  = require( 'PostView/PostView' );
-    var Styles    = require( './Styles' );
+    var $             = require( 'jquery' );
+    var Component     = require( 'Component' );
+    var Page          = require( 'Page/Page' );
+    var PostView      = require( 'PostView/PostView' );
+    var DateFormatter = require( '../../util/DateFormatter' );
+    var Styles        = require( './Styles' );
 
 	return Component.extend({
 		getThread: function( props ) {
@@ -27,34 +28,41 @@ define( function( require ) {
 			var state = this.getState();
 			var thread = this.getThread( props );
 
-			var replyBtn = $( '<a />', {
-				text: 'Reply',
-				href: location.hash + '/reply'
-			});
+			var responseCount =	thread ? thread.posts.length + ' Responses:' : '';
+			if ( thread.posts.length == 0 ) responseCount = 'No responses yet.';
+			if ( thread.posts.length == 1 ) responseCount = '1 Response';
 
 			return (
 				Page({
 					id: props.id + 'Page__',
 					title: thread ? thread.title : '',
-					button: replyBtn,
+					button: $( '<a />', {
+						text: 'Reply',
+						href: location.hash + '/reply'
+					}),
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					slideLeft: props.slideLeft,
+					username: props.username,
 					children: [
 						$( '<div />', {
 							css: Styles.openingPost
 						}).append([
+							$( '<div />', {
+								text: thread ? DateFormatter.format( thread.date ) : '',
+								css: Styles.date
+							}),
 							$( '<h2 />', {
-								text: thread.author,
+								text: thread ? thread.author : '',
 								css: Styles.author
 							}),
 							$( '<div />', {
-								text: thread.content,
+								text: thread ? thread.content : '',
 								css: Styles.threadContent
 							})
 						]),
 						$( '<h2 />', {
-							text: thread.posts.length + ' Responses:',
+							text: responseCount,
 							css: Styles.responses
 						}),
 						$( '<div />', {
@@ -66,7 +74,11 @@ define( function( require ) {
 								this.renderPosts( props, thread )
 							)
 						),
-						replyBtn.clone().css( Styles.replyBtn ),
+						$( '<a />', {
+							text: 'Reply',
+							href: location.hash + '/reply',
+							css: Styles.replyBtn
+						}),
 						$( '<div style="clear:both;"></div>' )
 					]
 				})

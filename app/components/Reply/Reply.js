@@ -21,9 +21,10 @@ define( function( require ) {
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					slideLeft: props.slideLeft,
+					username: props.username,
 					children: [
 						$( '<h2 />', {
-							text: thread.title,
+							text: thread ? thread.title : '',
 							css: Styles.title
 						}),
 						$( '<form />', {

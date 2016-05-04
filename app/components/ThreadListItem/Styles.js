@@ -4,7 +4,7 @@ define( function( require ) {
 
 	var listItem = {
 		padding: '10px 15px',
-		borderBottom: '1px solid rgba( 0, 0, 0, .125 )',
+		borderTop: '1px solid rgba( 0, 0, 0, .125 )',
 		color: GlobalStyles.mainFontColor,
 		background: 'transparent',
 		fontFamily: 'inherit'

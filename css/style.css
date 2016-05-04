@@ -76,11 +76,3 @@ strong {
 	padding: 0 15px;
 	min-height: 1px;
 }
-
-@media ( max-width: 768px ) {
-	.col_3,
-	.col_6,
-	.col_9 {
-		width: 100%;
-	}
-}

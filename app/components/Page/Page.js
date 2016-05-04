@@ -51,7 +51,8 @@ define( function( require ) {
 					Footer({
 						id: props.id + 'Footer__',
 						isLoggedIn: props.isLoggedIn,
-						onLogout: props.onLogout
+						onLogout: props.onLogout,
+						username: props.username
 					})
 				)
 			);

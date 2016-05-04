@@ -15,7 +15,8 @@ define( function( require ) {
 		border: '1px solid white',
 		background: 'transparent',
 		color: 'white',
-		fontFamily: 'inherit'
+		fontFamily: 'inherit',
+		textDecoration: 'none'
 	};
 
 	return {

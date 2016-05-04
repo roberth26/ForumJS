@@ -27,11 +27,11 @@ define( function( require ) {
 				location.hash = '/'; // redirect
 			},
 			logout: function() {
-				location.hash = '/login'; // redirect
 				this.setState({
 					isLoggedIn: false
 				});
 				this.saveState();
+				location.hash = '/login'; // redirect
 			},
 			registerUser: function( username ) {
 				this.login( username );
@@ -110,6 +110,7 @@ define( function( require ) {
 										onCreateThread: this.createThread,
 										isLoggedIn: state.isLoggedIn,
 										onLogout: this.logout,
+										username: state.username,
 										slideLeft: true
 									}),
 									redirect: {
@@ -126,6 +127,7 @@ define( function( require ) {
 										threads: state.threads,
 										isLoggedIn: state.isLoggedIn,
 										onLogout: this.logout,
+										username: state.username,
 										slideLeft: false
 									}),
 									redirect: {
@@ -166,6 +168,7 @@ define( function( require ) {
 										isLoggedIn: state.isLoggedIn,
 										onLogin: this.login,
 										onLogout: this.logout,
+										username: state.username,
 										getCurrentThread: this.getCurrentThread,
 										onReply: this.replyToThread,
 										slideLeft: true

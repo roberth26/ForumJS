@@ -25,6 +25,7 @@ define( function( require ) {
 					isLoggedIn: props.isLoggedIn,
 					onLogout: props.onLogout,
 					slideLeft: props.slideLeft,
+					username: props.username,
 					children: [
 						$( '<form />', {
 							submit: this.handleSubmit
