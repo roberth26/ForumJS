@@ -15,7 +15,8 @@ define( function( require ) {
 		border: '1px solid white',
 		background: 'transparent',
 		color: 'white',
-		fontFamily: 'inherit'
+		fontFamily: 'inherit',
+		textDecoration: 'none'
 	};
 
 	return {
@@ -24,22 +25,11 @@ define( function( require ) {
 			margin: '0 auto',
 			paddingBottom: 60
 		},
-		registerBtn: {
-			display: 'block',
-			height: 44,
-			borderRadius: '3px',
-			textAlign: 'center',
-			lineHeight: '40px',
-			width: '100%',
-			cursor: 'pointer',
-			fontSize: '1.6rem',
-			border: '1px solid white',
-			background: 'transparent',
-			color: 'white',
-			fontFamily: 'inherit',
+		registerBtn: $.extend( {}, btn, {
 			marginTop: 35,
 			marginBottom: 15
-		},
+		}),
+		accountBtn: btn,
 		input: {
 			display: 'block',
 			width: '100%',
@@ -69,6 +59,7 @@ define( function( require ) {
 		title: $.extend( {}, PageStyles.title, {
 			textAlign: 'center',
 			color: 'white'
-		})
+		}),
+		pageTransition: GlobalStyles.pageTransition
 	};
 });

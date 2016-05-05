@@ -27,6 +27,7 @@ define( function( require ) {
 			height: 44,
 			lineHeight: '44px',
 			marginTop: 5
-		}
+		},
+    	pageTransition: GlobalStyles.pageTransition
 	};
 });

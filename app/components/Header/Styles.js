@@ -32,7 +32,7 @@ define( function( require ) {
 		},
 		repoBtn: btn,
 		logoutBtn: $.extend( {}, btn, {
-			marginRight: 10
+			marginRight: 15
 		}),
 		container: GlobalStyles.container
 	};

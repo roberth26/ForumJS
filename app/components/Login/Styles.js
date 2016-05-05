@@ -59,6 +59,7 @@ define( function( require ) {
 		title: $.extend( {}, PageStyles.title, {
 			textAlign: 'center',
 			color: 'white'
-		})
+		}),
+		pageTransition: GlobalStyles.pageTransition
 	};
 });

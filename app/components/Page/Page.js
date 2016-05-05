@@ -1,6 +1,5 @@
 define( function( require ) {
     var $         = require( 'jquery' );
-    var animate   = require( '../../util/Animate' );
     var Component = require( 'Component' );
     var Row       = require( 'Row/Row' );
     var Header    = require( 'Header/Header' );
@@ -22,8 +21,7 @@ define( function( require ) {
 					$( '<div />', {
 						css: Styles.container,
 						onload: function() {
-							animate( $( this ), 'opacity', '', 0, 1, 300 );
-							animate( $( this ), 'transform', 'translate3d({value}px,0,0)', props.slideLeft ? 150 : -150, 0, 300 );
+							Styles.pageTransition( $( this ), props.slideLeft );
 						}
 					}).append(
 						Row({

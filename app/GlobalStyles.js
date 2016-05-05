@@ -1,5 +1,6 @@
 define( function( require ) {
-	var $ = require( 'jquery' );
+	var $       = require( 'jquery' );
+    var animate = require( '../util/Animate' );
 
 	var col = {
 		float: 'left',
@@ -26,6 +27,10 @@ define( function( require ) {
 		col_9: $.extend( {}, col, {
 			width: '75%'
 		}),
-		gradient: 'linear-gradient( 160deg, rgb( 114, 0, 255 ) 30%, rgb( 0, 136, 255 ) 100% )'
+		gradient: 'linear-gradient( 160deg, rgb( 114, 0, 255 ) 30%, rgb( 0, 136, 255 ) 100% )',
+		pageTransition: function( $page, rightToLeft ) {
+			animate( $page, 'opacity', '', 0, 1, 300 );
+			animate( $page, 'transform', 'translate3d({value}px,0,0)', rightToLeft ? 60 : -60, 0, 300 );
+		}
 	});
 });

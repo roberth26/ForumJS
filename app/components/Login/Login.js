@@ -24,7 +24,10 @@ define( function( require ) {
 						css: Styles.header
 					}),
 					$( '<div />', {
-						css: Styles.container
+						css: Styles.container,
+						onload: function() {
+							Styles.pageTransition( $( this ), props.slideLeft );
+						}
 					}).append(
 						$( '<h1 />', {
 							text: 'Login',

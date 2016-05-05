@@ -24,7 +24,10 @@ define( function( require ) {
 						css: Styles.header
 					}),
 					$( '<div />', {
-						css: Styles.container
+						css: Styles.container,
+						onload: function() {
+							Styles.pageTransition( $( this ), props.slideLeft );
+						}
 					}).append(
 						$( '<h1 />', {
 							text: 'Register',
@@ -81,6 +84,11 @@ define( function( require ) {
 								type: 'submit',
 								text: 'Register',
 								css: Styles.registerBtn
+							}),
+							$( '<a />', {
+								text: 'Have an account?',
+								css: Styles.accountBtn,
+								href: '#/login'
 							})
 						])
 					)
