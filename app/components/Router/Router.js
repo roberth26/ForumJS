@@ -3,14 +3,9 @@ define( function( require ) {
     var Component  = require( 'Component' );
 
 	return Component.extend({
-		state: {
-			route: null
-		},
 		handleHashChange: function( e ) {
 			e.preventDefault();
-			this.setState({
-				route: this.getMatchedRoute()
-			});
+			this.render();
 		},
 		getMatchedRoute: function() {
 			var hash = location.hash.substring( 1 );
@@ -34,16 +29,7 @@ define( function( require ) {
 			}
 		},
 		render: function() {
-			var state = this.getState();
-			var props = this.getProps();
-			
-			var route = state.route ? state.route : this.getMatchedRoute();
-
-			return (
-				$( '<div />' ).append(
-					route.component.call()
-				)
-			);
+			return this.getMatchedRoute().component();
 		}
 	});
 });
