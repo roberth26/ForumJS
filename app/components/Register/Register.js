@@ -6,13 +6,33 @@ define( function( require ) {
     var Styles    = require( './Styles' );
 
 	return Component.extend({
+		state: {
+			errors: []
+		},
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onRegisterUser( formData[ 0 ].value );
+			var errors = formData.filter( function( item ) {
+				return !item.value;
+			}).map( function( item, index ) {
+				return item.name;
+			});
+			if ( errors.length ) {
+				this.setState({
+					errors: errors
+				})
+			} else {
+				this.getProps().onRegisterUser(
+					formData[ 0 ].value,
+					formData[ 1 ].value,
+					formData[ 2 ].value
+				);
+			}
 		},
 		render: function() {
 			var props = this.getProps();
+			var state = this.getState();
+
 			return (
 				$( '<div />', {
 					css: Styles.page
@@ -49,7 +69,7 @@ define( function( require ) {
 									type: 'text',
 									name: 'username',
 									placeholder: 'username',
-									css: Styles.input
+									css: state.errors.indexOf( 'username' ) < 0 ? Styles.input : Styles.error
 								})
 							]),
 							$( '<div />', {
@@ -63,7 +83,7 @@ define( function( require ) {
 									type: 'password',
 									name: 'password',
 									placeholder: 'password',
-									css: Styles.input
+									css: state.errors.indexOf( 'password' ) < 0 ? Styles.input : Styles.error
 								})
 							]),
 							$( '<div />', {
@@ -77,7 +97,7 @@ define( function( require ) {
 									type: 'email',
 									name: 'email',
 									placeholder: 'email',
-									css: Styles.input
+									css: state.errors.indexOf( 'email' ) < 0 ? Styles.input : Styles.error
 								})
 							]),
 							$( '<button />', {

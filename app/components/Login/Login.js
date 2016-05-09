@@ -9,7 +9,7 @@ define( function( require ) {
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
-			this.getProps().onLogin( formData[ 0 ].value );
+			this.getProps().onLogin( formData[ 0 ].value, formData[ 1 ].value );
 		},
 		render: function() {
 			var props = this.getProps();

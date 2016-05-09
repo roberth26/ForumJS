@@ -3,7 +3,7 @@ requirejs.config({
 	'paths': {
 		'jquery': [
 			'http://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min',
-			'../vendor/jquery.min'
+			'../../vendor/jquery.min'
 		],
 		'GlobalStyles': '../GlobalStyles',
 		'DateFormatter': '../util/DateFormatter'

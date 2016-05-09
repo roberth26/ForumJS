@@ -19,6 +19,18 @@ define( function( require ) {
 		textDecoration: 'none'
 	};
 
+	var input = {
+		display: 'block',
+		width: '100%',
+		padding: '15px',
+		height: 44,
+		backgroundColor: 'rgba( 0, 0, 0, .2 )',
+		border: '1px solid rgba( 0, 0, 0, .2 )',
+		borderRadius: 3,
+		fontSize: '1.6rem',
+		color: 'white'
+	};
+
 	return {
 		form: {
 			width: 240,
@@ -30,17 +42,10 @@ define( function( require ) {
 			marginBottom: 15
 		}),
 		accountBtn: btn,
-		input: {
-			display: 'block',
-			width: '100%',
-			padding: '15px',
-			height: 44,
-			backgroundColor: 'rgba( 0, 0, 0, .2 )',
-			border: '1px solid rgba( 0, 0, 0, .2 )',
-			borderRadius: 3,
-			fontSize: '1.6rem',
-			color: 'white'
-		},
+		input: input,
+		error: $.extend( {}, input, {
+			border: '1px solid red'
+		}),
 		inputGroup: {
 			marginBottom: 15
 		},

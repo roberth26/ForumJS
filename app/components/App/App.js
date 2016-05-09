@@ -18,23 +18,45 @@ define( function( require ) {
 				username: '',
 				threads: data.threads
 			},
-			login: function( username ) {
-				this.setState({
-					isLoggedIn: true,
-					username: username
-				});
-				this.saveState();
-				location.hash = '/'; // redirect
+			login: function( username, password ) {
+				$.post( 'actions/login.php', JSON.stringify({
+					username: username,
+					password: password,
+				})).done( function( data ) {
+					data = JSON.parse( data );
+					if ( data.success ) {
+						this.setState({
+							isLoggedIn: true,
+							username: username
+						});
+						location.hash = '/'; // redirect
+					} else {
+						alert( data.message );
+					}
+				}.bind( this ));
 			},
 			logout: function() {
-				this.setState({
-					isLoggedIn: false
-				});
-				this.saveState();
-				location.hash = '/login'; // redirect
+				$.post( 'actions/logout.php' ).done( function( data ) {
+					this.setState({
+						isLoggedIn: false,
+						username: ''
+					});
+					location.hash = '/login'; // redirect
+				}.bind( this ));
 			},
-			registerUser: function( username ) {
-				this.login( username );
+			registerUser: function( username, password, email ) {
+				$.post( 'actions/register.php', JSON.stringify({
+					username: username,
+					password: password,
+					email: email
+				})).done( function( data ) {
+					data = JSON.parse( data );
+					if ( data.success ) {
+						this.login( username, password );
+					} else {
+						alert( data.message );
+					}
+				}.bind( this ));
 			},
 			saveState: function() {
 				localStorage.setItem( 'forumState', JSON.stringify( this.getState() ) );
