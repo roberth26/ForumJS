@@ -1,6 +1,6 @@
 define( function( require ) {
-    var $          = require( 'jquery' );
-    var Component  = require( 'Component' );
+    var $         = require( 'jquery' );
+    var Component = require( 'Component' );
 
 	return Component.extend({
 		handleHashChange: function( e ) {

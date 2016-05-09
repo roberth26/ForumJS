@@ -2,6 +2,7 @@ define( [ 'jquery' ], function( $ ) {
 	function Component( props, templateComponent ) {
 
 		this.componentWillUpdate = function() {}; // default componentWillUpdate
+		this.componentDidMount = function() {}; // default componentDidMount
 
 		// merge template component properties and methods to this object
 		$.extend( true, this, templateComponent );
@@ -52,6 +53,9 @@ define( [ 'jquery' ], function( $ ) {
 		var componentWillUpdate = this.componentWillUpdate;
 		delete this.componentWillUpdate; // remove public access
 
+		var componentDidMount = this.componentDidMount;
+		delete this.componentDidMount; // remove public access
+
 		var renderTemplate = this.render;
 
 		this.render = function() {
@@ -62,10 +66,11 @@ define( [ 'jquery' ], function( $ ) {
 			}
 
 			componentWillUpdate();
-
 			var template = renderTemplate();
 			$el.replaceWith( template );
-			$el = template;		
+			$el = template;
+
+			$el.ready( componentDidMount );
 
 			$el.data( 'state', state );
 			$el.attr( 'data-id', id );

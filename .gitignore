@@ -45,3 +45,7 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+wordpress_login.txt
+/wordpress/wp-includes
+/wordpress/wp-admin
