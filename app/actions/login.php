@@ -1,6 +1,6 @@
 <?php
 define( 'WP_USE_THEMES', false );
-require_once( dirname( __FILE__ ) . '/wordpress/wp-load.php' );
+require_once( dirname( __FILE__ ) . '/../../wordpress/wp-load.php' );
 
 $data = json_decode( file_get_contents( 'php://input' ) );
 
@@ -17,7 +17,8 @@ $login = wp_signon( $creds, false );
 
 if ( $login instanceof WP_User ) {
 	echo json_encode( array(
-		'success' => true
+		'success' => true,
+		'userid' => $login -> ID
 	));
 } else {
 	echo json_encode( array(

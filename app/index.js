@@ -11,13 +11,11 @@ requirejs.config({
 });
 
 requirejs( [ 'jquery', 'App/App' ], function( $, App ) {
-	App.then( function( app ) {
-		$( document ).ready( function() {
-			$( '#app_container' ).append(
-				app({
-					id: 'App-01__'
-				})
-			);
-		});
+	$( document ).ready( function() {
+		$( '#app_container' ).append(
+			App({
+				id: 'App-01__'
+			})
+		);
 	});
 });

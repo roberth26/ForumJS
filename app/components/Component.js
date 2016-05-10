@@ -45,9 +45,10 @@ define( [ 'jquery' ], function( $ ) {
 		};
 
 		// public method that sets the state and triggers a render
-		this.setState = function( newState ) {
+		this.setState = function( newState, shouldRender ) {
 			$.extend( state, newState );
-			this.render();
+			if ( shouldRender !== false )
+				this.render();
 		};
 
 		var componentWillUpdate = this.componentWillUpdate;
@@ -66,6 +67,7 @@ define( [ 'jquery' ], function( $ ) {
 			}
 
 			componentWillUpdate();
+
 			var template = renderTemplate();
 			$el.replaceWith( template );
 			$el = template;

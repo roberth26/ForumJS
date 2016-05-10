@@ -8,11 +8,13 @@ define( function( require ) {
 		handleSubmit: function( e ) {
 			e.preventDefault();
 			var formData = $( e.target ).serializeArray();
+			formData = formData.reduce( function( object, value, index ) {
+				object[ value.name ] = value.value;
+				return object;
+			}, {} );
 			this.getProps().onCreateThread(
-				formData.reduce( function( object, value, index ) {
-					object[ value.name ] = value.value;
-					return object;
-				}, {} )
+				formData.title,
+				formData.content
 			);
 		},
 		render: function() {
