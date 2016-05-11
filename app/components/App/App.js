@@ -1,6 +1,5 @@
 define( function( require ) {
     var $            = require( 'jquery' );
-    //var Data         = require( '../../services/Data' );
     var Component    = require( 'Component' );
     var Router       = require( 'Router/Router' );
     var ThreadList   = require( 'ThreadList/ThreadList' );
@@ -100,14 +99,10 @@ define( function( require ) {
 				$.get( 'app/actions/getThreads.php' )
 				.done( function( data ) {
 					var threads = JSON.parse( data );
-					if ( JSON.stringify( threads ) == JSON.stringify( stateThreads ) ) {
+					if ( JSON.stringify( threads ) != JSON.stringify( stateThreads ) ) {
 						this.setState({
 							threads: threads
 						}, false ); // prevent render
-					} else {
-						this.setState({
-							threads: threads
-						});
 					}
 				}.bind( this ));
 			}
