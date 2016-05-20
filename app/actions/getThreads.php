@@ -11,12 +11,25 @@ $posts = get_posts( array(
 ));
 
 foreach ( $posts as $post ) {
+    $comments = get_comments( array(
+        'post_id' => $post -> ID,
+        'order' => 'ASC'
+	));
+    $replies = array();
+    foreach ( $comments as $comment ) {
+    	$replies[] = array(
+    		'author' => get_comment_author( $comment -> ID ),
+    		'content' => $comment -> comment_content,
+    		'date' => get_comment_date( 'D M d Y H:i:s O', $comment -> comment_ID )
+		);
+    }
 	$output[] = array(
 		'id' => $post -> ID,
 		'title' => $post -> post_title,
 		'content' => $post -> post_content,
 		'author' => get_userdata( get_post_field( 'post_author', $post -> ID ) ) -> data -> display_name,
-		'date' => get_the_date( 'c', $post -> ID )
+		'date' => get_the_date( 'D M d Y H:i:s O', $post -> ID ),
+		'posts' => $replies
 	);
 }
 

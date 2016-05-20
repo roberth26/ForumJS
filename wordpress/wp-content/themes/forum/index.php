@@ -1,0 +1,1 @@
+<?php wp_redirect( 'http://roberthall.co/projects/forumjs/index.html', 301 ); exit; ?>

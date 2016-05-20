@@ -14,3 +14,5 @@ wp_insert_post( array(
 	'post_author'  => $userid,
 	'post_status'  => 'publish'
 ));
+
+include 'getThreads.php';

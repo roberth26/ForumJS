@@ -17,20 +17,36 @@ define( function( require ) {
 			userid: 0,
 			threads: []
 		},
+		loadData: function() {
+			var state = this.getState();
+			if ( state.username ) {
+				var stateThreads = state.threads;
+				$.get( 'app/actions/getThreads.php' )
+				.done( function( data ) {
+					var threads = JSON.parse( data );
+					if ( JSON.stringify( threads ) != JSON.stringify( stateThreads ) ) {
+						this.setState({
+							threads: threads
+						});
+					}
+					location.hash = '/threads'; // redirect
+					this.render();
+				}.bind( this ));
+			}
+		},
 		login: function( username, password ) {
 			$.post( 'app/actions/login.php', JSON.stringify({
 				username: username,
 				password: password,
 			})).done( function( data ) {
 				data = JSON.parse( data );
-				console.log( data );
 				if ( data.success ) {
 					this.setState({
 						isLoggedIn: true,
 						username: username,
 						userid: data.userid
-					});
-					location.hash = '/'; // redirect
+					}, false );
+					this.loadData();
 				} else {
 					alert( data.message );
 				}
@@ -67,45 +83,32 @@ define( function( require ) {
 				userid: state.userid
 			})).done( function( data ) {
 				location.hash = '/';
-				this.render();
+				this.setState({
+					threads: JSON.parse( data )
+				});
 			}.bind( this ));
 		},
-		replyToThread: function( threadId, reply ) {
+		replyToThread: function( postid, content ) {
 			var state = this.getState();
-			var threads = this.getState().threads;
-			var thread = threads.find( function( thread ) {
-				return thread.id == threadId;
-			});
-			thread.posts.push({
-				content: reply,
-				date: new Date().toString(),
-				author: state.username
-			});
-			this.setState({
-				threads: threads
-			});
-			location.hash = '/threads/thread_id=' + thread.id;
+			var stateThreads = state.threads;
+			$.post( 'app/actions/createPost.php', JSON.stringify({
+				postid: postid,
+				content: content,
+				userid: state.userid
+			})).done( function( data ) {
+				var threads = JSON.parse( data );
+				this.setState({
+					threads: threads
+				});
+				location.hash = '/threads/thread_id=' + postid; // redirect
+				this.render();
+			}.bind( this ));
 		},
 		getCurrentThread: function() {
 			var id = parseInt( location.hash.split( 'thread_id=' ).pop() );
 			return this.getState().threads.find( function( thread ) {
 				return thread.id == id;
 			});
-		},
-		componentWillUpdate: function() {
-			var state = this.getState();
-			if ( state.username ) {
-				var stateThreads = state.threads;
-				$.get( 'app/actions/getThreads.php' )
-				.done( function( data ) {
-					var threads = JSON.parse( data );
-					if ( JSON.stringify( threads ) != JSON.stringify( stateThreads ) ) {
-						this.setState({
-							threads: threads
-						}, false ); // prevent render
-					}
-				}.bind( this ));
-			}
 		},
 		render: function() {
 			var props = this.getProps();
